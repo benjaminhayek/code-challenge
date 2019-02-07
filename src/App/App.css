@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+}
+
+.right {
+  border: 1px solid green;
+}
+
+.wrong {
+  border: 1px solid black;
+}

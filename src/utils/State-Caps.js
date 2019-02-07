@@ -1,4 +1,4 @@
-export const mockData = {
+const mockData = {
     AL: {
     name: "Alabama",
     capital: "Montgomery",
@@ -299,4 +299,6 @@ export const mockData = {
     lat: "41.145548",
     long: "-104.802042",
     },
-    }
+}
+
+export default mockData

@@ -13,6 +13,10 @@ class App extends Component {
   }
 
   componentDidMount(){
+    this.newShit()
+  }
+
+  newShit = () => {
     let results = this.dataCleaner()
     this.setState({randomStates: results})
     let capital = results[Math.floor(Math.random()*4)]
@@ -32,7 +36,12 @@ class App extends Component {
     let fourRandom = []
     for (let i = 0; i < 4; i++) { 
     let randomState = stateInfo[Math.floor(Math.random()*stateInfo.length)]
-      fourRandom.push(randomState)
+      if(!fourRandom.includes(randomState)){
+        fourRandom.push(randomState)
+      }
+      else {
+        break
+      }
     }
     return fourRandom
   }
@@ -41,7 +50,8 @@ class App extends Component {
 
   checkCapital = (value) => {
     if(value.capital === this.state.randomCapital) {
-      this.setState({status: 'correct'})
+      this.setState({status: `${value.capital}`})
+      setTimeout(this.newShit, 3000);
     } else {
       this.setState({status: 'incorrect'})
     }
@@ -51,7 +61,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>country game</h1>
-        <div>{this.state.randomStates.map(state => <div className={this.state.status === 'correct' ? 'right' : 'wrong'} value={state} onClick={() => this.checkCapital(state)} key={state.name}> {state.name} </div>)} </div>
+        <div>{this.state.randomStates.map(state => <div className={this.state.status === `${state.capital}` ? 'right' : 'wrong'} value={state} onClick={() => this.checkCapital(state)} key={state.name}> {state.name} </div>)} </div>
         <div value={this.state.randomCapital}>{this.state.randomCapital}</div>
       </div>
     );

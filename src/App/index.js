@@ -62,7 +62,7 @@ class App extends Component {
       <div className="App">
         <h1>country game</h1>
         <div>{this.state.randomStates.map(state => <div className={this.state.status === `${state.capital}` ? 'right' : 'wrong'} value={state} onClick={() => this.checkCapital(state)} key={state.name}> {state.name} </div>)} </div>
-        <div value={this.state.randomCapital}>{this.state.randomCapital}</div>
+        <div className='capital' value={this.state.randomCapital}>{this.state.randomCapital}</div>
       </div>
     );
   }
